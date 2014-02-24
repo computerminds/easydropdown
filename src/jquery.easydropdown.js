@@ -92,18 +92,20 @@
             disabledClass = self.disabled ? ' disabled' : '',
             multipleClass = self.multiple ? ' multiple' : '';
 
-          self.$container = self.$select.wrap('<div class="' + self.wrapperClass + touchClass + disabledClass + multipleClass + '"><span class="old"/></div>').parent().parent();
-          self.$active = $('<span class="selected">' + self.getSelectionText() + '</span>').appendTo(self.$container);
-          self.$carat = $('<span class="carat"/>').appendTo(self.$container);
-          self.$scrollWrapper = $('<div><ul/></div>').appendTo(self.$container);
-          self.$dropDown = self.$scrollWrapper.find('ul');
-          self.$form = self.$container.closest('form');
-          $.each(self.options, function () {
+			self.$container = self.$select.wrap('<div class="'+self.wrapperClass+touchClass+disabledClass+multipleClass+'"><span class="old"/></div>').parent().parent();
+			self.$active = $('<span class="selected"></span>').appendTo(self.$container);
+			self.$carat = $('<span class="carat"/>').appendTo(self.$container);
+			self.$scrollWrapper = $('<div><ul/></div>').appendTo(self.$container);
+			self.$dropDown = self.$scrollWrapper.find('ul');
+			self.$form = self.$container.closest('form');
+			$.each(self.options, function(){
 				var	option = this,
 					active = option.selected ? ' class="active"':'';
 				self.$dropDown.append('<li'+active+'>'+option.title+'</li>');
 			});
 			self.$items = self.$dropDown.find('li');
+
+			self.$active.text(self.getSelectionText());
 
 			if(self.cutOff && self.$items.length > self.cutOff)self.$container.addClass('scrollable');
 
