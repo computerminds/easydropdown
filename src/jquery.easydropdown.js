@@ -51,7 +51,7 @@
 					if($option.is(':selected')){
 						self.selected.push({
 							index: i,
-							title: $option.text()
+							title: $option.html()
 						});
 						if (self.focusIndex === undefined) {
 							self.focusIndex = i;
@@ -59,12 +59,12 @@
 					};
 					if($option.hasClass('label') && i == 0){
 						self.hasLabel = true;
-						self.label = $option.text();
+						self.label = $option.html();
 						$option.attr('value','');
 					} else {
 						self.options.push({
 							domNode: $option[0],
-							title: $option.text(),
+							title: $option.html(),
 							value: $option.val(),
 							selected: $option.is(':selected')
 						});
@@ -73,7 +73,7 @@
 				if(!self.selected.length){
 					self.selected = [{
 						index: 0,
-						title: self.$options.eq(0).text()
+						title: self.$options.eq(0).html()
 					}];
 					self.focusIndex = 0;
 				};
@@ -105,7 +105,7 @@
 			});
 			self.$items = self.$dropDown.find('li');
 
-			self.$active.text(self.getSelectionText());
+			self.$active.html(self.getSelectionText());
 
 			if(self.cutOff && self.$items.length > self.cutOff)self.$container.addClass('scrollable');
 
@@ -122,7 +122,7 @@
 			var self = this, selectionString, i = 0;
 
 			if ((self.multiple && !self.selected.length) || (!self.multiple && typeof self.selected.title == 'undefined')) {
-				return self.$options.eq(0).text();
+				return self.$options.eq(0).html();
 			}
 
 			if (self.multiple) {
@@ -170,20 +170,20 @@
 			self.$select.on({
 				change: function(){
 					var	$selected = $(this).find('option:selected'),
-						title = $selected.text(),
+						title = $selected.html(),
 						value = $selected.val(),
 						selectedArr = [];
 
 					$selected.each(function(idx, el) {
 						selectedArr.push({
-							title : $(el).text(),
+							title : $(el).html(),
 							index : $(el).index()
 						});
 					});
 
 					self.selected = self.multiple ? selectedArr : selectedArr[0];
 
-					self.$active.text(self.getSelectionText());
+					self.$active.html(self.getSelectionText());
 
 					self.fireChangeCallback();
 				},
@@ -209,7 +209,7 @@
 				} else {
 					self.onChange.call(self.$select[0], $selected.map(function(i, el) {
 						return {
-							title: $(el).text(),
+							title: $(el).html(),
 							value : $(el).val()
 						};
 					}));
@@ -346,7 +346,7 @@
 			if(self.$form.length){
 				self.$form.on('reset.easyDropDown', function(){
 					var active = self.hasLabel ? self.label : self.options[0].title;
-					self.$active.text(active);
+					self.$active.html(active);
 				});
 			};
 		},
@@ -438,7 +438,7 @@
 				} else {
 					self.selected = {
 						index: 0,
-						title: self.$options.eq(0).text()
+						title: self.$options.eq(0).html()
 					};
 				}
 			} else {
@@ -464,7 +464,7 @@
 
 			self.focusIndex = i;
 
-			self.$active.text(self.getSelectionText());
+			self.$active.html(self.getSelectionText());
 
 			self.fireChangeCallback();
 		},
