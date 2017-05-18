@@ -1,3 +1,5 @@
+> Fork of patrickkunda/easydropdown, with a couple of its PRs merged in: #76 (xss protection), #71 (clicking on carat won't open), #44 (multiple select support)
+
 > NB: This project is not currently under developement or maintainance. Unfortunately I do not have time to devote to it at the moment, but a v3.0 rewrite will happen at some point in the future. Issues have been disabled for now, but I would recommend reviewing the pending pull requests to get an idea of which issues may affect your project and the neccessary fixes that have been generously contributed by the community. Unfortunately I can not respond to any support questions regarding this plugin. Thank you.
 
 # EasyDropDown
